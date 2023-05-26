@@ -1,15 +1,7 @@
 <app-menu> </app-menu>
-<div class="contenedor">
+<app-list-component></app-list-component>
+<div >
 
-    <!--<app-rating (rated)="manejarRated($event)"></app-rating>
-    <div>
-        <input type="text" (input)="title= $event.target.value"/>
-    </div>
-    <div>
-        <input type ="checkbox" checkbox (change)="ocultar = !ocultar" /> ocultar
-    </div>
-
-    <app-ciclo-de-vida *ngIf= "ocultar" [titulo]="title"></app-ciclo-de-vida>-->
 
 <input type ="file" style="display: none" #cargador>
 <button (click)="cargador.click()">Cargar Archivo</button>
