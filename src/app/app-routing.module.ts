@@ -13,6 +13,7 @@ import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.com
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 
+
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'generos',component: IndiceGenerosComponent},
