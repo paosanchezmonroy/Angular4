@@ -1,1 +1,8 @@
-<p>filtro-peliculas works!</p>
+<h2> Buscar peliculas</h2>
+
+<form [formGroup]="form">
+    <mat-form-field appearance ="outline">
+        <mat-label>Titulo</mat-label>
+        <input formControlName="titulo" matInput />
+    </mat-form-field>
+</form>
