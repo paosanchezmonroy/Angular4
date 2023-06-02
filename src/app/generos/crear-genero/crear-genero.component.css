@@ -3,6 +3,6 @@ button{
 }
 
 mat-form-field{
-    width: 100%;
-    max-width: 500px;
+    width: 500%;
+    max-width: 1000px;
 }
