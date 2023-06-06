@@ -8,8 +8,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class FiltroPeliculasComponent implements OnInit {
   constructor(private formBuilder: FormBuilder){ }
-  
   form: FormGroup
+
+  generos = [
+    {id: 1, nombre: 'Drama'},
+    {id: 2, nombre: 'Accion'},
+    {id: 3, nombre: 'Comedia'},
+    {id: 4, nombre: 'terror'}
+  ];
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       titulo: '',
@@ -17,6 +24,10 @@ export class FiltroPeliculasComponent implements OnInit {
       proximosEstrenos: false,
       enCines: false,
     });
+  }
+
+  limpiar(){
+    
   }
 
 }

@@ -5,4 +5,24 @@
         <mat-label>Titulo</mat-label>
         <input formControlName="titulo" matInput />
     </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+        <mat-label>Género</mat-label>
+         <mat-select formControlName = "generoId">
+            <mat-option *ngFor="let genero of generos" [value] ="genero.id">{{genero.nombre}}</mat-option>
+         </mat-select>
+    </mat-form-field>
+
+    <div>
+        <mat-checkbox formControlName="proximosEstrenos">Proximos Esternos </mat-checkbox>
+    </div>
+
+    <div>
+        <mat-checkbox formControlName="enCines">En Cines</mat-checkbox>
+    </div>
+
+    <div>
+        <button mat-flat-button (click)="limpiar()" color="warn"></button>
+    </div>
 </form>
