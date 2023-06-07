@@ -1,8 +1,14 @@
-fotm {
-    width: 100%;
+form {
+    width: 80%;
+    
 }
 
 form mat-form-field {
     width: 30%;
     margin-right: 2rem;
+    
+}
+
+Contenedor-limpiar{
+    margin-bottom: 1rem;
 }

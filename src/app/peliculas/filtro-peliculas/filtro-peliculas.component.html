@@ -3,7 +3,7 @@
 <form [formGroup]="form">
     <mat-form-field appearance ="outline">
         <mat-label>Titulo</mat-label>
-        <input formControlName="titulo" matInput />
+        <input formControlName="title" matInput />
     </mat-form-field>
 
 
@@ -22,7 +22,10 @@
         <mat-checkbox formControlName="enCines">En Cines</mat-checkbox>
     </div>
 
-    <div>
-        <button mat-flat-button (click)="limpiar()" color="warn"></button>
+    <div class = "Contenedor-limpiar">
+        <button mat-flat-button (click)="limpiar()" color="warn">Limpiar</button>
     </div>
 </form>
+
+<app-list-component [movies]="peliculas" ></app-list-component>
+

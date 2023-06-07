@@ -1,16 +1,21 @@
 .peliculas-contenedor{
     display: flex;
-    flex-wrap:wrap;
-    flex-direction:row;
+    flex-wrap: wrap;
+    flex-direction: row;
     align-items: center;
+    
 }
 
 .pelicula-contenedor{
     margin-right: 2%;
     margin-bottom: 10px;
     text-align: center;
+    
 }
 
+img{
+    max-width: 80%;
+}
 p{
     max-width: 225px;
     height: 44px;
@@ -21,6 +26,7 @@ p{
 image {
     width: 225px;
     height: 300px;
+	object-fit: cover
 }
 
 button{
