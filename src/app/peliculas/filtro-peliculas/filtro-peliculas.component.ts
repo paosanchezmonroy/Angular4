@@ -38,7 +38,8 @@ export class FiltroPeliculasComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(this.formularioOriginal);
-   
+    this.leerValoresURL();
+    this.buscarPeliculas(this.form.value);
     
     this.form.valueChanges
     .subscribe(valores => {
@@ -58,10 +59,16 @@ export class FiltroPeliculasComponent implements OnInit {
       if(params.generoId){
         objeto.generoId=params.generoId;
       }
-      if(params.proximosEstrenos)
-      {
-        objeto.proximosEstrenos=params.proximosEstrenos
+
+      if(params.proximosEstrenos)      {
+        objeto.proximosEstrenos=params.proximosEstrenos;
       }
+
+      if(params.enCines){
+        objeto.enCines=params.enCines;
+      }
+
+      this.form.patchValue(objeto);
     });
   }
 
