@@ -50,14 +50,14 @@ export class FiltroPeliculasComponent implements OnInit {
   }
 
   private leerValoresURL(){
-    this.activatedRoute.params.subscribe((params)=>{
+    this.activatedRoute.queryParams.subscribe((params) => {
       var objeto: any = {};
       
       if(params.titulo){
         objeto.titulo=params.titulo;
       }
       if(params.generoId){
-        objeto.generoId=params.generoId;
+        objeto.generoId= Number (params.generoId);
       }
 
       if(params.proximosEstrenos)      {
@@ -75,23 +75,25 @@ export class FiltroPeliculasComponent implements OnInit {
 
 
   private escribirParametrosBusquedaEnURL(){
-    var queryString = [];
+    var queryStrings = [];
 
     var valoresFormulario = this.form.value;
 
     if(valoresFormulario.titulo){
-      queryString.push('titulo=${valoresFormulario.titulo}');
+      queryStrings.push(`titulo=${valoresFormulario.titulo}`);
     }
+
     if(valoresFormulario.generoId){
-      queryString.push('generoId=${valoresFormulario.generoId');
+      queryStrings.push(`generoId=${valoresFormulario.generoId}`);
     }
+
     if (valoresFormulario.proximosEstrenos){
-      queryString.push('prroximosEstrenos=${valoresFormulario.proximosEstrenos');
+      queryStrings.push(`proximosEstrenos=${valoresFormulario.proximosEstrenos}`);
     }
     if(valoresFormulario.enCines){
-      queryString.push('enCines=${valoresFormulario.enCines}');
+      queryStrings.push(`enCines=${valoresFormulario.enCines}`);
     }
-    this.location.replaceState('peliculas/buscar',queryString.join('&'));
+    this.location.replaceState('peliculas/buscar',queryStrings.join('&'));
   }
 
 
