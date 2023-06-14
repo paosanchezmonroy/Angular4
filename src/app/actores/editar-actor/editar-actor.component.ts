@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { actorCreacionDTO } from '../actor';
+import { actorCreacionDTO, actorDTO } from '../actor';
 
 @Component({
   selector: 'app-editar-actor',
@@ -10,8 +10,7 @@ import { actorCreacionDTO } from '../actor';
 export class EditarActorComponent implements OnInit{
   constructor(private activatedRoute: ActivatedRoute){}
 
-  modelo: actorCreacionDTO = {nombre: 'Ariel', fechaNacimineto: new Date()}
-
+  modelo: actorDTO = {nombre: 'Ariel', fechaNacimineto: new Date(), foto: 'https://cdn.mos.cms.futurecdn.net/d9VN7jtsJfuVFV5bV88N8D-320-80.jpg'};
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       //alert(params.id);
