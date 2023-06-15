@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { LeafletMouseEvent, Marker, latLng, marker, tileLayer } from 'leaflet';
+import { outputAst } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LeafletMouseEvent, Marker, icon, latLng, marker, tileLayer } from 'leaflet';
 import { MarkdownComponent } from 'ngx-markdown';
+import { Coordenada } from './coordenada';
 
 @Component({
   selector: 'app-mapa',
@@ -10,8 +12,15 @@ import { MarkdownComponent } from 'ngx-markdown';
 export class MapaComponent  implements  OnInit{
   
   constructor(){}
+  @Input()
+  coordenadasIniciales: Coordenada[] = [];
+  
+  @Output()
+  coordenadasSeleccionada: EventEmitter<Coordenada> = new EventEmitter<Coordenada>();
 
   ngOnInit(): void {
+
+    this.capas = this.coordenadasIniciales.map(valor => marker ([valor.latitud, valor.longitud]));
   }
 
   options = {
@@ -29,8 +38,21 @@ export class MapaComponent  implements  OnInit{
     const longitud = event.latlng.lng;
     console.log(latitud,longitud);
     this.capas= [];
-    this.capas.push(marker([latitud, longitud]));
-    }
+    this.capas.push(marker([latitud, longitud], {
+      icon: icon({
+        iconSize: [25,41],
+        iconAnchor: [13,41],
+        iconUrl: 'marker-icon.png',
+        iconRetinaUrl: 'marker-icon-2x.png',
+        shadowUrl: 'assets/marker-shadow.png'
+      })
+    }));
+
+
+    this.coordenadasSeleccionada.emit({latitud: latitud, longitud: longitud});
+    
+  
+  }
       
   
 
