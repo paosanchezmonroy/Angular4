@@ -20,10 +20,6 @@ export class InputMarkdownComponent implements OnInit {
     
   }
 
-  inputTextArea(texto: string){
-    this.contenidoMarkdown = texto;
-    this. changeMarkdown.emit(texto);
-
-  }
+ 
 
 }
