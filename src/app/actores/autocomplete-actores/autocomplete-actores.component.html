@@ -6,7 +6,7 @@
         matInput
         [formControl]="control"
         [matAutocomplete]="auto"
-        class="mat-elevation-z8"
+        
         />
     </mat-form-field>
     <mat-autocomplete #auto
@@ -23,6 +23,10 @@
     *ngIf="actoresSeleccionados.length > 0"
     mat-table
     [dataSource]="actoresSeleccionados"
+    class="mat-elevation-z8"
+    cdkDropList
+    [cdkDropListData]="actoresSeleccionados"
+    (cdkDropListDropped)="finalizarArrastre($event)"
 >
 
 
@@ -61,9 +65,12 @@
     </td>
 </ng-container>
 
-
-
-<tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+<tr mat-row *matRowDef="let row; columns: columnasAMostrar"
+cdkDrag [cdkDragData]="row"
+></tr>
+ 
 </table>
  
+
+
 
