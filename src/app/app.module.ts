@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 import {MarkdownModule} from 'ngx-markdown'
 import {LeafletModule} from '@asymmetrik/ngx-leaflet'
-
+import {HttpClientModule} from '@angular/common/http'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,7 @@ import { MapaComponent } from './utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component';
+import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-errores.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,8 @@ import { AutocompleteActoresComponent } from './actores/autocomplete-actores/aut
     FormularioPeliculaComponent,
     SelectorMultipleComponent,
     AutocompleteActoresComponent,
+    MostrarErroresComponent,
+
     
   ],
   imports: [
@@ -77,6 +80,7 @@ import { AutocompleteActoresComponent } from './actores/autocomplete-actores/aut
     FormsModule,
     LeafletModule,
     MarkdownModule.forRoot(),
+    HttpClientModule,
     
   ],
   providers: [],

@@ -12,6 +12,11 @@ import { generoCreacionDTO } from '../genero';
 export class FormularioGeneroComponent implements OnInit {
    constructor(private formBuilder: FormBuilder){}
    form: FormGroup;
+
+
+   @Input()
+    errores: string[] = [];
+   
   
    @Input()
    modelo: generoCreacionDTO;
