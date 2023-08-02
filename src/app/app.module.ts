@@ -12,6 +12,8 @@ import { ListComponentComponent } from './movies/list-component/list-component.c
 import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './utilidades/rating/rating.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -81,6 +83,7 @@ import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-er
     LeafletModule,
     MarkdownModule.forRoot(),
     HttpClientModule,
+    SweetAlert2Module.forRoot(),
     
   ],
   providers: [],
