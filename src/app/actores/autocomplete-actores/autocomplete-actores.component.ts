@@ -1,8 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteActivatedEvent, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable } from '@angular/material/table';
+import { actorPeliculaDTO } from '../actor';
+import { ActoresService } from '../actores.service';
 
 @Component({
   selector: 'app-autocomplete-actores',
@@ -10,33 +12,34 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./autocomplete-actores.component.css']
 })
 export class AutocompleteActoresComponent implements OnInit {
-  constructor(){}
+  constructor(private actoresService: ActoresService){}
  
   control: FormControl = new FormControl();
-  actores = [
-    {nombre: 'Tom Holland',personaje: '', foto: 'https://cdn.justjared.com/wp-content/uploads/headlines/2017/08/tom-holland-frog-theory.jpg'},
-    {nombre: 'Keanu Revees',personaje: '',foto: 'https://remezcla.com/wp-content/uploads/2022/11/Keanu-Reeves-as-John-Wick-in-John-Wick-4-300x300.jpg'},
-    {nombre: 'Henry Cavill',personaje: '', foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSErq-tZ8dqAxwGwdCZPabOsfNyV6hKHNOOUg&usqp=CAU'},
-  ]
-  
-  actoresOriginal = this.actores;
-  actoresSeleccionados = [];
+ 
+  @Input()
+  actoresSeleccionados: actorPeliculaDTO[] = [];
+
+  actoresAMostrar: actorPeliculaDTO[] = [];
 
   columnasAMostrar=['imagen','nombre','personaje','acciones'];
   @ViewChild(MatTable) table: MatTable<any>;
 
   ngOnInit(): void {
-    this.control.valueChanges.subscribe(valor => {
-      this.actores = this.actoresOriginal;
-      this.actores = this.actores.filter(actor => actor.nombre.indexOf(valor) !== -1);
-    });
-
-  }
+    this.control.valueChanges.subscribe(nombre => {
+    this.actoresService.obtenerPorNombre(nombre).subscribe(actores =>{
+        console.log(nombre)
+        this.actoresAMostrar = actores;
+    })
+  });
+}
+      
 
   optionSelected(event: MatAutocompleteSelectedEvent){
     console.log(event.option.value);
+    console.log("seleccionar");
     this.actoresSeleccionados.push(event.option.value);
     this.control.patchValue('');
+  // this.control.setValue('');
     if (this.table !== undefined){
       this.table.renderRows();
     }
